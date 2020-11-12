@@ -1,33 +1,50 @@
 import React, { Component } from "react";
 class Calculator extends Component {
-  //STEP 2 initial state show 0
   constructor(props) {
     super(props);
-    console.log("Constructor",this)
+    console.log(this);
     this.state = {
-      no1: 0,
-      no2: 0,
-      mySum: 0,
+      no1: '',
+      no2: '',
+      Result: '',
     };
-    //STEP 3 Bind the inputs with function() line 16-29
-    this._changeNo1 = this._changeNo1.bind(this);
-    this._changeNo2 = this._changeNo2.bind(this);
-  }
-  //STEP 4 add two numbers
-  _changeNo1(e) {
-    let newNo1 = +e.target.value;
+    this._changeNo1=this._changeNo1.bind(this);
+    this._changeNo2=this._changeNo2.bind(this);
+    this.calcAdd = this.calcAdd.bind(this);
+}
+  _changeNo1(event) {
+   
+      //console.log('number1 changed')
+    
+    let newNo1 = event.target.value;
+    if(!isNaN(newNo1)){
+        this.setState({
+            no1: newNo1,
+                //Result: newNo1 + this.state.no2,
+            Result:''
+        });
+        
+    }
+    
+}
+  _changeNo2(event) {
+   
+    //console.log('number2 changed')
+    let newNo2 = event.target.value;
     this.setState({
-      no1: newNo1,
-      mySum: newNo1 + this.state.no2,
+        no2: newNo2,
+            //Result: newNo2 + this.state.no1,
+        Result:''
     });
+    
   }
-  //STEP 4 add two numbers
-  _changeNo2(e) {
-    let newNo2 = +e.target.value;
+  calcAdd(event) {
+    event.preventDefault();
+   
     this.setState({
-      no2: newNo2,
-      mySum: newNo2 + this.state.no1,
+      Result: parseInt(this.state.no1) + parseInt(this.state.no2)
     });
+
   }
   render() {
     return (
@@ -35,25 +52,29 @@ class Calculator extends Component {
         <h1>Add with React!</h1>
 
         <div className="add">
-          <input
-            type="text"
-            value={this.state.no1}//STEP 2 Show 0
-            onChange={this._changeNo1}//line 12 STEP 3 Bind and trigger onChange
-          />
-          <span>+</span>
-          <input
-            type="text"
-            value={this.state.no2}//STEP 2 Show 0
-            onChange={this._changeNo2}//line 12 STEP 3 Bind and trigger onChange
-          />
-          <span>=</span>
-          {/* STEP 2 Show Result */}
-          <h3>Result: {this.state.mySum}</h3> 
+          <form>
+            <input
+              type="text"
+              value={this.state.no1}
+              onChange={this._changeNo1}
+              placeholder="enter a number"
+            />
+            <span>+</span>
+            <input
+              type="text"
+              value={this.state.no2}
+              onChange={this._changeNo2}
+              placeholder="enter a number"
+            />
+            <span>
+                <button onClick={this.calcAdd} id="add" className='btn'>Add
+                </button></span>
+            <h3>Result: {this.state.Result}</h3>
+          </form>
         </div>
       </div>
     );
   }
-  
 }
 
 export default Calculator;
