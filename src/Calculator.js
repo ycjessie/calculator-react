@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 class Calculator extends Component {
+  //STEP 2 initial state show 0
   constructor(props) {
     super(props);
     this.state = {
@@ -18,17 +19,18 @@ class Calculator extends Component {
         <div className="add">
           <input
             type="text"
-            value={this.state.no1}
+            value={this.state.no1}//STEP 2 Show 0
             onChange={this._changeNo1}
           />
           <span>+</span>
           <input
             type="text"
-            value={this.state.no2}
+            value={this.state.no2}//STEP 2 Show 0
             onChange={this._changeNo2}
           />
           <span>=</span>
-          <h3>Result: {this.state.mySum}</h3>
+          {/* STEP 2 Show 0 */}
+          <h3>Result: {this.state.mySum}</h3> 
         </div>
       </div>
     );
