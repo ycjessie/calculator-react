@@ -3,12 +3,13 @@ class Calculator extends Component {
   //STEP 2 initial state show 0
   constructor(props) {
     super(props);
+    console.log("Constructor",this)
     this.state = {
       no1: 0,
       no2: 0,
       mySum: 0,
     };
-    //STEP 3 Bind the inputs
+    //STEP 3 Bind the inputs with function() line 16-29
     this._changeNo1 = this._changeNo1.bind(this);
     this._changeNo2 = this._changeNo2.bind(this);
   }
