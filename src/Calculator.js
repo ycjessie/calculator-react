@@ -11,6 +11,7 @@ class Calculator extends Component {
     this._changeNo1=this._changeNo1.bind(this);
     this._changeNo2=this._changeNo2.bind(this);
     this.calcAdd = this.calcAdd.bind(this);
+    this.calcMinus = this.calcMinus.bind(this);
 }
   _changeNo1(event) {
    
@@ -46,6 +47,14 @@ class Calculator extends Component {
     });
 
   }
+  calcMinus(event) {
+    event.preventDefault();
+   
+    this.setState({
+      Result: parseInt(this.state.no1) - parseInt(this.state.no2)
+    });
+
+  }
   render() {
     return (
       <div className="container">
@@ -59,7 +68,7 @@ class Calculator extends Component {
               onChange={this._changeNo1}
               placeholder="enter a number"
             />
-            <span>+</span>
+            <span> </span>
             <input
               type="text"
               value={this.state.no2}
@@ -67,8 +76,11 @@ class Calculator extends Component {
               placeholder="enter a number"
             />
             <span>
-                <button onClick={this.calcAdd} id="add" className='btn'>Add
+                <button onClick={this.calcAdd} id="add" className='btn'>+
+                </button> <button onClick={this.calcMinus} id="minus" className='btn'> - 
                 </button></span>
+                
+                
             <h3>Result: {this.state.Result}</h3>
           </form>
         </div>
