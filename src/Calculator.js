@@ -12,6 +12,9 @@ class Calculator extends Component {
     this._changeNo2=this._changeNo2.bind(this);
     this.calcAdd = this.calcAdd.bind(this);
     this.calcMinus = this.calcMinus.bind(this);
+    this.calcMultiply = this.calcMultiply.bind(this);
+    this.calcDivide = this.calcDivide.bind(this);
+
 }
   _changeNo1(event) {
    
@@ -41,19 +44,27 @@ class Calculator extends Component {
   }
   calcAdd(event) {
     event.preventDefault();
-   
     this.setState({
       Result: parseInt(this.state.no1) + parseInt(this.state.no2)
     });
-
   }
   calcMinus(event) {
     event.preventDefault();
-   
     this.setState({
       Result: parseInt(this.state.no1) - parseInt(this.state.no2)
     });
-
+  }
+  calcMultiply(event) {
+    event.preventDefault();
+    this.setState({
+      Result: parseInt(this.state.no1) * parseInt(this.state.no2)
+    });
+  }
+  calcDivide(event) {
+    event.preventDefault();
+    this.setState({
+      Result: parseInt(this.state.no1) / parseInt(this.state.no2)
+    });
   }
   render() {
     return (
@@ -78,6 +89,9 @@ class Calculator extends Component {
             <span>
                 <button onClick={this.calcAdd} id="add" className='btn'>+
                 </button> <button onClick={this.calcMinus} id="minus" className='btn'> - 
+                </button><button onClick={this.calcMultiply} id="multiply" className='btn'> X
+                </button>
+                <button onClick={this.calcDivide} id="division" className='btn'> /
                 </button></span>
                 
                 
