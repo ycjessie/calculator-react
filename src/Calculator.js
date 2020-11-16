@@ -8,15 +8,16 @@ class Calculator extends Component {
       no2: '',
       Result: '',
     };
-    this._changeNo1=this._changeNo1.bind(this);
-    this._changeNo2=this._changeNo2.bind(this);
-    this.calcAdd = this.calcAdd.bind(this);
+    //line 20 Bind is replaced with the arrow function
+    //this._changeNo1=this._changeNo1.bind(this);
+    //this._changeNo2=this._changeNo2.bind(this);
+    //this.calcAdd = this.calcAdd.bind(this);
     this.calcMinus = this.calcMinus.bind(this);
     this.calcMultiply = this.calcMultiply.bind(this);
     this.calcDivide = this.calcDivide.bind(this);
 
 }
-  _changeNo1(event) {
+  _changeNo1=(event)=> {
    
       //console.log('number1 changed')
     
@@ -31,7 +32,7 @@ class Calculator extends Component {
     }
     
 }
-  _changeNo2(event) {
+  _changeNo2=(event)=> {
    
     //console.log('number2 changed')
     let newNo2 = event.target.value;
@@ -42,7 +43,7 @@ class Calculator extends Component {
     });
     
   }
-  calcAdd(event) {
+  calcAdd=(event)=> {
     event.preventDefault();
     this.setState({
       Result: parseInt(this.state.no1) + parseInt(this.state.no2)
